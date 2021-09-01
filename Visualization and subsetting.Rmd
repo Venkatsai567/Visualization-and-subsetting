@@ -1,0 +1,436 @@
+---
+title: "Pollution_data"
+author: "Group_5"
+date: "04/03/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#The problem statement in this dataset include the valuation of Air Quality index as it is the main element in our daily life maintaing the level of Air Quality in this dataset we got to evaluate Air Quality with various elements/chemicals like NO, NO2, NOx, NH3, CO, SO2, O3, C6H6, C7H8, C8H10. These elements/chemicals acts as a chief in maintaining Air Quality
+##The below code used to upload the data set
+
+```{r}
+library(readxl)
+library(DataExplorer)
+library(ggplot2)
+library(dplyr)
+
+data1 = read_excel("D:\\Akhil MBA\\MBA 3 Trimester\\Statistical Modeling using R\\CIA 2\\Pollution_Data.xlsx")
+View(data1)
+
+
+```
+
+
+##In this we will find the corelation between elements/chemicals in city 'Amaravathi' where red represents no corelation pink represents partially corelation and green represents high corelation
+
+##By observing the corelation plot we can analyse that few elements are highly corealted and few are not at all corelated. These corelated elements may have chance of effecting the environment
+
+```{r}
+
+library(corrplot)
+
+data2 = filter(select(data1, City, NO:C8H10),City=='Amaravati')
+View(data2)
+cor(data2[,2:11])
+crr1 = cor(data2[,2:11])
+ryg<-colorRampPalette(c("red","pink","green"))(20)
+heatmap(crr1, col= ryg, main = "Corelation of Amaravati")
+
+
+```
+
+
+
+##In this we will find the corelation between elements/chemicals in city 'Chandigarh' where White represents no corelation pink represents partially corelation and green represents high corelation
+
+##By observing the corelation plot we can analyse that few elements are highly corealted and few are not at all corelated. These corelated elements may have chance of effecting the environment
+
+```{r}
+
+data3 = filter(select(data1, City, NO:C8H10),City=='Chandigarh')
+View(data3)
+cor(data3[,2:11])
+crr2 = cor(data3[,2:11])
+ryg<-colorRampPalette(c("White","pink","green"))(20)
+heatmap(crr2, col= ryg, main = "Corelation of Chandigarh")
+
+```
+##In this we will find the corelation between elements/chemicals in city 'Delhi' where White represents no corelation Ornage represents partially corelation and green represents high corelation
+
+
+##By observing the corelation plot we can analyse that few elements are highly corealted and few are not at all corelated. These corelated elements may have chance of effecting the environment
+
+
+```{r}
+data4 = filter(select(data1, City, NO:C8H10),City=='Delhi')
+View(data4)
+cor(data4[,2:11])
+crr3 = cor(data4[,2:11])
+ryg<-colorRampPalette(c("White","Orange","green"))(20)
+heatmap(crr3, col= ryg, main = "Corelation of Delhi")
+
+```
+##In this we will find the corelation between elements/chemicals in city 'Gurugram' where Pink represents no corelation Orange represents partially corelation and green represents high corelation
+
+##By observing the corelation plot we can analyse that few elements are highly corealted and few are not at all corelated. These corelated elements may have chance of effecting the environment
+
+```{r}
+
+data5 = filter(select(data1, City, NO:C8H10),City=='Gurugram')
+View(data5)
+cor(data5[,2:11])
+crr4 = cor(data5[,2:11])
+ryg<-colorRampPalette(c("Pink","Orange","green"))(20)
+heatmap(crr4, col= ryg, main = "Corelation of Gurugram")
+
+
+
+
+```
+##In this we will find the corelation between elements/chemicals in city 'Hyderabad' where Pink represents no corelation Orange represents partially corelation and White represents high corelation
+
+##By observing the corelation plot we can analyse that few elements are highly corealted and few are not at all corelated. These corelated elements may have chance of effecting the environment
+
+```{r}
+data6 = filter(select(data1, City, NO:C8H10),City=='Hyderabad')
+View(data6)
+cor(data6[,2:11])
+crr5 = cor(data6[,2:11])
+ryg<-colorRampPalette(c("Pink","Orange","White"))(20)
+heatmap(crr5, col= ryg, main = "Corelation of Hyderabad")
+
+
+```
+
+##In this we will find the corelation between elements/chemicals in city 'Kolkata' where Pink represents no corelation Red represents partially corelation and White represents high corelation
+
+##By observing the corelation plot we can analyse that few elements are highly corealted and few are not at all corelated. These corelated elements may have chance of effecting the environment
+
+```{r}
+
+data7 = filter(select(data1, City, NO:C8H10),City=='Kolkata')
+View(data7)
+cor(data7[,2:11])
+crr6 = cor(data7[,2:11])
+ryg<-colorRampPalette(c("Pink","Red","White"))(20)
+heatmap(crr6, col= ryg, main = "Corelation of Kolkata")
+
+```
+##In this we will find the corelation between elements/chemicals in city 'patna' where Orange represents no corelation Brown represents partially corelation and Yellow represents high corelation
+
+##By observing the corelation plot we can analyse that few elements are highly corealted and few are not at all corelated. These corelated elements may have chance of effecting the environment
+
+
+```{r}
+
+data8 = filter(select(data1, City, NO:C8H10),City=='Patna')
+View(data8)
+cor(data8[,2:11])
+crr7 = cor(data8[,2:11])
+ryg<-colorRampPalette(c("Orange","Brown","Yellow"))(20)
+heatmap(crr7, col= ryg, main = "Corelation of Patna")
+
+
+```
+##In this we will find the corelation between elements/chemicals in city 'Visakhapatnam' where Orange represents no corelation Red represents partially corelation and Green represents high corelation
+
+##By observing the corelation plot we can analyse that few elements are highly corealted and few are not at all corelated. These corelated elements may have chance of effecting the environment
+
+```{r}
+
+data9 = filter(select(data1, City, NO:C8H10),City=='Visakhapatnam')
+View(data9)
+cor(data9[,2:11])
+crr8 = cor(data9[,2:11])
+ryg<-colorRampPalette(c("Orange","Red","Green"))(20)
+heatmap(crr8, col= ryg, main = "Corelation of Vishakhapatnam")
+
+
+```
+##In this we will find the corelation between elements/chemicals in city 'Amritsar' where Orange represents no corelation White represents partially corelation and Blue represents high corelation
+
+##By observing the corelation plot we can analyse that few elements are highly corealted and few are not at all corelated. These corelated elements may have chance of effecting the environment
+
+
+```{r}
+
+data10 = filter(select(data1, City, NO:C8H10),City=='Amritsar')
+View(data10)
+cor(data10[,2:11])
+crr9 = cor(data10[,2:11])
+ryg<-colorRampPalette(c("Orange","White","Blue"))(20)
+heatmap(crr9, col= ryg, main = "Corelation of Amritsar")
+
+```
+##In this below code we can see that all the chemicals histogram says that all the chemical are Right skewed 
+
+##The below Right Skewed data specifies that more number of occurance of elements are there within the give range
+```{r}
+ggplot(data=data1) + geom_histogram(mapping=aes(O3))
+ggplot(data=data1) + geom_histogram(mapping=aes(SO2))
+ggplot(data=data1) + geom_histogram(mapping=aes(NO))
+ggplot(data=data1) + geom_histogram(mapping=aes(NO2))
+ggplot(data=data1) + geom_histogram(mapping=aes(NH3))
+ggplot(data=data1) + geom_histogram(mapping=aes(CO))
+ggplot(data=data1) + geom_histogram(mapping=aes(C6H6))
+ggplot(data=data1) + geom_histogram(mapping=aes(C7H8))
+ggplot(data=data1) + geom_histogram(mapping=aes(C8H10))
+ggplot(data=data1) + geom_histogram(mapping=aes(NOx))
+
+
+```
+##The below code represents the relationship between PM2.5,PM10,City,AQI,AQI_Cat
+
+##In this the first graph specifies the relationship between PM2.5 and PM10 how does each elements are related
+##In second graph we can find the realtionship of PM2.5 with PM10 among various cities
+##In thrid graph we can find the realtionship of PM2.5 with PM10 among various cities and also the Air Quality catogiries
+##In fourth graph we can analyse the relationship between PM2.5 with Air Qualit and the categories of Air Quality
+##In fiveth graph we can analyse the relationship between PM10 with Air Qualit and the categories of Air Quality
+
+
+```{r}
+ggplot(data = data1, aes(data1$PM2.5,data1$PM10) )+geom_point()
+ggplot(data = data1, aes(data1$PM2.5,data1$PM10) )+geom_point()+facet_grid(~data1$City)
+ggplot(data = data1, aes(data1$PM2.5,data1$PM10) )+geom_point()+facet_grid(~data1$AQI_Cat~data1$City)
+ggplot(data = data1, aes(data1$PM2.5,data1$AQI) )+geom_point()+facet_grid(~data1$AQI_Cat)
+ggplot(data = data1, aes(data1$PM10,data1$AQI) )+geom_point()+facet_grid(~data1$AQI_Cat)
+
+
+```
+##The below code specifies the relationship between City,AQI,PM2.5 and PM10
+
+##In this the first graph specifies the relationship between Air Quality and City and Air Quality Category
+##In second graph we can find the realtionship of PM2.5 with among various cities
+##In thrid graph we can find the realtionship of PM2.5 with among various cities and also the Air Quality catogiries
+##In fourth graph we can analyse the relationship between PM2.5 with among various cities
+##In fiveth graph we can analyse the relationship between PM10 with among various cities and also the Air Quality
+
+
+```{r}
+ggplot(data = data1, aes(data1$AQI,data1$City) )+geom_point()+facet_grid(~data1$AQI_Cat)
+ggplot(data = data1, aes(data1$PM2.5,data1$City) )+geom_col()
+ggplot(data = data1, aes(data1$PM2.5,data1$City) )+geom_col()+facet_grid(~data1$AQI_Cat)
+ggplot(data = data1, aes(data1$PM10,data1$City) )+geom_col()
+ggplot(data = data1, aes(data1$PM10,data1$City) )+geom_col()+facet_grid(~data1$AQI_Cat)
+
+
+
+
+```
+
+
+##In the below graph we can get to know the amount of sepecific chemical/element present in each cities counting in sum 
+##By observing we can say mostly delhi is shown as highest
+
+```{r}
+
+ggplot(data = data1, aes(data1$NO,data1$City) )+geom_col()
+ggplot(data = data1, aes(data1$NOx,data1$City) )+geom_col()
+ggplot(data = data1, aes(data1$NH3,data1$City) )+geom_col()
+ggplot(data = data1, aes(data1$CO,data1$City) )+geom_col()
+ggplot(data = data1, aes(data1$SO2,data1$City) )+geom_col()
+ggplot(data = data1, aes(data1$O3,data1$City) )+geom_col()
+ggplot(data = data1, aes(data1$C6H6,data1$City) )+geom_col()
+ggplot(data = data1, aes(data1$C8H10,data1$City) )+geom_col()
+
+
+```
+
+
+#Finding the Poor and very Poor Air Quality Index for each City
+
+##From the above selected data after analyzing we are arranging the data having Poor and very Poor AQI index
+
+
+##The below code specifies the number of AQI_CAt poor and very poor for city Amaravati
+
+```{r}
+data1_Amaravati=filter(data1,City== 'Amaravati' ,AQI_Cat== 'Very Poor'|AQI_Cat== 'Poor') #49 out of 646
+dim(data1_Amaravati)
+View(data1_Amaravati)
+
+#Amaravati-49 out of 646
+(49/646)*100                    #7.58%
+
+
+```
+
+##The below code specifies the number of AQI_CAt poor and very poor for city Amritsar
+
+
+```{r}
+data1_Amritsar=filter(data1,City== 'Amritsar' ,AQI_Cat== 'Very Poor'|AQI_Cat== 'Poor') #96 out of 636
+dim(data1_Amritsar)
+View(data1_Amritsar)
+
+#Amritsar-96 out of 636
+(96/636)*100                    #15.09%
+
+
+```
+
+
+##The below code specifies the number of AQI_CAt poor and very poor for city Chandigarh
+
+```{r}
+data1_Chandigarh=filter(data1,City== 'Chandigarh' ,AQI_Cat== 'Very Poor'|AQI_Cat== 'Poor') #18 out of 277
+dim(data1_Chandigarh)
+View(data1_Chandigarh)
+
+#Chandigarh-18 out of 277
+(18/277)*100                    #6.49%
+
+
+```
+
+
+##The below code specifies the number of AQI_CAt poor and very poor for city Delhi
+
+```{r}
+data1_Delhi=filter(data1,City== 'Delhi' ,AQI_Cat== 'Very Poor'|AQI_Cat== 'Poor') #643 out of 1224
+dim(data1_Delhi)
+View(data1_Delhi)
+
+#Delhi-643 out of 1224
+(643/1224)*100                 #52.53%
+
+
+
+```
+
+##The below code specifies the number of AQI_CAt poor and very poor for city Gurugram
+
+```{r}
+data1_Gurugram=filter(data1,City== 'Gurugram' ,AQI_Cat== 'Very Poor'|AQI_Cat== 'Poor') #2 out of 119
+dim(data1_Gurugram)
+View(data1_Gurugram)
+
+#Gurugram-2 out of 119
+(2/119)*100                    #1.68%
+
+
+```
+
+
+##The below code specifies the number of AQI_CAt poor and very poor for city Hyderabad
+
+```{r}
+data1_Hyderabad=filter(data1,City== 'Hyderabad' ,AQI_Cat== 'Very Poor'|AQI_Cat== 'Poor') #33 out of 1618
+dim(data1_Hyderabad)
+View(data1_Hyderabad)
+
+#Hyderabad-33 out of 1618
+(33/1618)*100                   #2.03%
+
+
+
+```
+
+##The below code specifies the number of AQI_CAt poor and very poor for city Kolkata
+
+
+```{r}
+data1_Kolkata=filter(data1,City== 'Kolkata' ,AQI_Cat== 'Very Poor'|AQI_Cat== 'Poor') #73 out of 394
+dim(data1_Kolkata)
+View(data1_Kolkata)
+
+#Kolkata-73 out of 394
+(73/394)*100                    #18.52
+
+
+
+```
+
+##The below code specifies the number of AQI_CAt poor and very poor for city Patna
+
+```{r}
+data1_Patna=filter(data1,City== 'Patna' ,AQI_Cat== 'Very Poor'|AQI_Cat== 'Poor') #56 out of 191
+dim(data1_Patna)
+View(data1_Patna)
+
+#Patna-56 out of 191
+(56/191)*100                   #29.31
+
+
+
+```
+
+##The below code specifies the number of AQI_CAt poor and very poor for city Visakhapatnam
+
+```{r}
+data1_Visakhapatnam=filter(data1,City== 'Visakhapatnam' ,AQI_Cat== 'Very Poor'|AQI_Cat== 'Poor') #88 out of 1131
+dim(data1_Visakhapatnam)
+View(data1_Visakhapatnam)
+
+#Visakhapatnam-88 out of 1131
+(88/1131)*100                  #7.7%
+
+
+```
+
+##Compared to all the cities and the responses of AQI_Cat, we can say that the delhi has the high percentage and we can conclude that this city has more pollution compared to other cities. The least pollution is Gurugram.
+
+##From the above output we suggest a strategy for  top 3 as Delhi, Amritsar, Patna to decrease the usage of NOx, O3, NO2, NH3, NO are being as highest elements which are causing a series problem to environment.
+
+##We can see that the chief elements/chemicals that are effecting environment are NOx, O3, NO2, NH3, NO
+
+##The solutions required to implement the startegies top 3 polluted cities Delhi,Amritsar, Patna  inculde less usage of Gasoline products, reduced deforestation, avoid burning of fossil fuels, Using of public transport helps in reducing pollution.
+
+##For decrease in usage of Chemicals.
+###For decrease in usage of NOx steps can be usage of Low Nitrogen feul, Use of Water Emulsification.
+###For decrease in usage of O3 steps can be avoid excessive idling of your automobile, Refuel your car in the evening when its cooler.
+###For decrease in usage of NO2 steps can be usage of Low Nitrogen feul, Use of Water Emulsification.
+###For decrease in usage of NH3 steps can be instead of using ammonium fertilizers we can use nitrogen fertilizers with urea fertilizers.
+###For decrease in usage of NO steps can be No usage of Plastic bags, by installing air pollution control equipment.
+
+##The above suggested few steps can be taken care to main good Air Quality Index
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
